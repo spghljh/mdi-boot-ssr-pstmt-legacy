@@ -60,7 +60,7 @@ public class CpuDaoImpl extends AbstractJdbcDao implements CpuDao {
 		try (Connection conn = getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
-
+			
 			while (rs.next()) {
 				CpuDTO cpu = new CpuDTO();
 				cpu.setIdCpu(rs.getInt("id_cpu"));
@@ -87,6 +87,8 @@ public class CpuDaoImpl extends AbstractJdbcDao implements CpuDao {
 
 	@Override
 	public CpuDTO selectCpuById(Integer cpuId) {
+//	public CpuDTO selectCpuById(Integer cpuId, int appUserId) {
+		
 		String sql = """
 				    SELECT
 				        m.id_cpu,
@@ -110,7 +112,11 @@ public class CpuDaoImpl extends AbstractJdbcDao implements CpuDao {
 		CpuDTO cpu = null;
 
 		try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+		
+//	    try (Connection conn = getConnection()) {
+//	    	setAppUserId(conn, appUserId);
+//	    	try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
 			pstmt.setInt(1, cpuId);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
@@ -135,7 +141,7 @@ public class CpuDaoImpl extends AbstractJdbcDao implements CpuDao {
 		}
 
 		return cpu;
-	}
+	} 
 
 	@Override
 	public CpuDTO selectCpuByName(String nameCpu) {

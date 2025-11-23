@@ -11,6 +11,8 @@ public interface CpuDao {
 
 	List<CpuDTO> selectAllCpus();
 
+//	CpuDTO selectCpuById(Integer cpuId,int appUserId);
+	
 	CpuDTO selectCpuById(Integer cpuId);
 
 	CpuDTO selectCpuByName(String nameCpu);

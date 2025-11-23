@@ -36,6 +36,10 @@ public class CpuServiceImpl implements CpuService {
 	    return list;
 	}
 
+//	@Override
+//	public CpuDTO getCpuById(Integer cpuId, int appUserId) {
+//	    return cpuDAO.selectCpuById(cpuId, appUserId);
+//	}
 
 	@Override
 	public CpuDTO getCpuById(Integer cpuId) {

@@ -1,6 +1,7 @@
 package kr.co.mdi.common.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
@@ -18,6 +19,13 @@ public abstract class AbstractJdbcDao {
 	protected Connection getConnection() throws SQLException {
 		return dataSource.getConnection();
 	}
+	
+    protected void setAppUserId(Connection conn, int appUserId) throws SQLException {
+        try (PreparedStatement ps = conn.prepareStatement("SET @app_user_id = ?")) {
+            ps.setInt(1, appUserId);
+            ps.executeUpdate();
+        }
+    }
 	
 }
 

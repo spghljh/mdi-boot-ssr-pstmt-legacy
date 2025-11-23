@@ -79,6 +79,13 @@ public class CpuController {
 	 */
 	@GetMapping("/cpus/{cpuId}")
 	public String cpuDetail(@PathVariable Integer cpuId, Model model) {
+//	public String cpuDetail(@PathVariable Integer cpuId,
+//            HttpSession session,
+//            Model model) {
+		
+//		Integer appUserId = (Integer) session.getAttribute("appUserId");
+//		CpuDTO cpu = cpuService.getCpuById(cpuId, appUserId);
+		
 		CpuDTO cpu = cpuService.getCpuById(cpuId);
 		String cpuName = cpu.getNameCpu();
 
